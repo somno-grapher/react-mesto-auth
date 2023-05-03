@@ -8,11 +8,13 @@ import api from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
-import Header from './Header.js';
-import Main from './Main.js';
 import Footer from './Footer.js';
-import PopupWithForm from './PopupWithForm.js';
+import Header from './Header.js';
 import ImagePopup from './ImagePopup.js';
+import Login from './Login';
+import Main from './Main.js';
+import PopupWithForm from './PopupWithForm.js';
+import Register from './Register';
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
   const [isConfirmPopupOpen, setConfirmPopupState] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
 
   function closeAllPopups() {
@@ -124,15 +127,22 @@ function App() {
 
       <div className="page">
         <Header />
-        <Main
-          cards={cards}
-          handleAddPlaceClick={handleAddPlaceClick}
-          handleEditAvatarClick={handleEditAvatarClick}
-          handleEditProfileClick={handleEditProfileClick}
-          onCardClick={handleCardClick}
-          onCardDelete={handleCardDelete}
-          onCardLike={handleCardLike}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={<Main
+              cards={cards}
+              handleAddPlaceClick={handleAddPlaceClick}
+              handleEditAvatarClick={handleEditAvatarClick}
+              handleEditProfileClick={handleEditProfileClick}
+              onCardClick={handleCardClick}
+              onCardDelete={handleCardDelete}
+              onCardLike={handleCardLike}
+            />}
+          />
+          <Route path="/sign-in" element={<Login />} />
+          <Route path="/sign-up" element={<Register />} />
+        </Routes>
         <Footer />
       </div>
 
