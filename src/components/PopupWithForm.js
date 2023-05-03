@@ -1,3 +1,5 @@
+import React from 'react';
+
 function PopupWithForm({
   buttonText, // has default value
   isOpen,

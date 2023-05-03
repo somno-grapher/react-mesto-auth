@@ -1,3 +1,5 @@
+import React from 'react';
+
 import logoPath from '../images/logo/mesto-russia-logo.svg';
 
 function Header() {
