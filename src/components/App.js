@@ -14,6 +14,7 @@ import ImagePopup from './ImagePopup.js';
 import Login from './Login';
 import Main from './Main.js';
 import PopupWithForm from './PopupWithForm.js';
+import ProtectedRouteElement from './ProtectedRoute';
 import Register from './Register';
 
 function App() {
@@ -130,15 +131,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Main
-              cards={cards}
-              handleAddPlaceClick={handleAddPlaceClick}
-              handleEditAvatarClick={handleEditAvatarClick}
-              handleEditProfileClick={handleEditProfileClick}
-              onCardClick={handleCardClick}
-              onCardDelete={handleCardDelete}
-              onCardLike={handleCardLike}
-            />}
+            element={
+              <ProtectedRouteElement
+                element={Main}
+                isLoggedIn={isLoggedIn}
+                cards={cards}
+                handleAddPlaceClick={handleAddPlaceClick}
+                handleEditAvatarClick={handleEditAvatarClick}
+                handleEditProfileClick={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardDelete={handleCardDelete}
+                onCardLike={handleCardLike}
+              />
+            }
           />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<Register />} />
