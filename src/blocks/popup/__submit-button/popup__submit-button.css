@@ -1,14 +1,14 @@
-.popup__save-button {
+.popup__submit-button {
   transition: .3s;
   margin-top: 18px;
 }
 
-.popup__save-button:hover {
+.popup__submit-button:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 917px) {
-  .popup__save-button {
+  .popup__submit-button {
     margin-top: 15px;
   }
 }

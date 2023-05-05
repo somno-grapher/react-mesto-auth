@@ -1,4 +1,4 @@
-.save-button {
+.submit-button {
   border-radius: 2px;
   background-color: #000;
   border: none;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 917px) {
-  .save-button {
+  .submit-button {
     font-size: 14px;
     line-height: 1.21;
     height: 46px;

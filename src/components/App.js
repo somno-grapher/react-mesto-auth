@@ -25,7 +25,7 @@ function App() {
   const [isConfirmPopupOpen, setConfirmPopupState] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [selectedCard, setSelectedCard] = useState({});
 
   function closeAllPopups() {
