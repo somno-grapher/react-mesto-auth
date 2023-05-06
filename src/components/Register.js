@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Entry from "./Entry";
 
 function Register() {
+
+  const [formValue, setFormValue] = useState({
+    email: '',
+    password: ''
+  });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormValue({
+      ...formValue,
+      [name]: value
+    });
+  }
 
   return (
     <Entry
@@ -13,9 +26,9 @@ function Register() {
     >
       <label className="input-label">
         <input
-          // value={name}
-          // onChange={handleNameChange}
-          name="register-email"
+          value={formValue.email}
+          onChange={handleChange}
+          name="email"
           type="email"
           placeholder="Email"
           id="register-email-input"
@@ -25,9 +38,9 @@ function Register() {
       </label>
       <label className="input-label">
         <input
-          // value={description}
-          // onChange={handleDescriptionChange}
-          name="register-password"
+          value={formValue.password}
+          onChange={handleChange}
+          name="password"
           type="password"
           placeholder="Пароль"
           id="register-password-input"
