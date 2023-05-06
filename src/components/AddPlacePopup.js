@@ -45,7 +45,7 @@ function AddPlacePopup({
       onClose={onClose}
       title="Новое место"
     >
-      <label className="popup__label">
+      <label className="input-label">
         <input
           value={name}
           onChange={handleNameChange}
@@ -60,7 +60,7 @@ function AddPlacePopup({
         />
         <span className="card-title-input-error popup__error"></span>
       </label>
-      <label className="popup__label">
+      <label className="input-label">
         <input
           value={link}
           onChange={handleLinkChange}

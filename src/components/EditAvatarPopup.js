@@ -33,7 +33,7 @@ function EditAvatarPopup({
       onClose={onClose}
       title="Обновить аватар"
     >
-      <label className="popup__label">
+      <label className="input-label">
         <input
           ref={inputRef}
           name="avatar-link"

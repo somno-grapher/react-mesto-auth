@@ -37,7 +37,7 @@ function EditProfilePopup({
     setDescription(currentUser.about || '');
   },
     [currentUser,
-    isOpen]);
+      isOpen]);
 
   return (
     <PopupWithForm
@@ -47,7 +47,7 @@ function EditProfilePopup({
       onClose={onClose}
       title="Редактировать профиль"
     >
-      <label className="popup__label">
+      <label className="input-label">
         <input
           value={name}
           onChange={handleNameChange}
@@ -61,7 +61,7 @@ function EditProfilePopup({
           required />
         <span className="profile-name-input-error popup__error"></span>
       </label>
-      <label className="popup__label">
+      <label className="input-label">
         <input
           value={description}
           onChange={handleDescriptionChange}

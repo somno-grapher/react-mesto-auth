@@ -1,0 +1,11 @@
+.entry__input {
+  color: #fff;
+  font-weight: 500;
+  border-bottom: 2px solid #ccc;
+}
+
+.entry__input::placeholder {
+  font-weight: 400;
+  color: #ccc;
+  opacity: 1;
+}

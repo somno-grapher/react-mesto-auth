@@ -21,6 +21,7 @@ function Entry({
         noValidate
         onSubmit={onSubmit}
       >
+        {children}
         <button
           className="submit-button entry__submit-button"
           type="submit"

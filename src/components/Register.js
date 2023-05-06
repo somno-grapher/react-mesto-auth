@@ -4,8 +4,6 @@ import Entry from "./Entry";
 
 function Register() {
 
-  const name = "fsdfas";
-
   return (
     <Entry
       title="Регистрация"
@@ -13,33 +11,29 @@ function Register() {
       linkTitle="Уже зарегистрированы? Войти"
       linkPath="/sign-in"
     >
-      <label className="entry__label">
+      <label className="input-label">
         <input
-          value={name}
+          // value={name}
           // onChange={handleNameChange}
-          name="profile-name"
-          type="text"
-          placeholder="Имя"
-          id="profile-name-input"
-          className="input-field input-field_name_profile-name popup__input"
-          minLength="2"
-          maxLength="40"
+          name="register-email"
+          type="email"
+          placeholder="Email"
+          id="register-email-input"
+          className="input-field input-field_name_register-email entry__input"
           required />
-        <span className="profile-name-input-error popup__error"></span>
+        <span className="register-email-input-error entry__error"></span>
       </label>
-      <label className="popup__label">
+      <label className="input-label">
         <input
           // value={description}
           // onChange={handleDescriptionChange}
-          name="profile-about"
-          type="text"
-          placeholder="О себе"
-          id="profile-about-input"
-          className="input-field input-field_name_profile-about popup__input"
-          minLength="2"
-          maxLength="200"
+          name="register-password"
+          type="password"
+          placeholder="Пароль"
+          id="register-password-input"
+          className="input-field input-field_name_register-password entry__input"
           required />
-        <span className="profile-about-input-error popup__error"></span>
+        <span className="register-password-input-error entry__error"></span>
       </label>
     </Entry>
   );
