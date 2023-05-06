@@ -5,8 +5,7 @@ function ProtectedRouteElement({ element: Component, ...props }) {
   return (
     props.isLoggedIn
       ? <Component {...props} />
-      // TODO sign-in
-      : <Navigate to="/sign-up" replace />
+      : <Navigate to="/sign-in" replace />
   );
 }
 

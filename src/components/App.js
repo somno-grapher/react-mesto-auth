@@ -25,7 +25,7 @@ function App() {
   const [isConfirmPopupOpen, setConfirmPopupState] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
 
   function closeAllPopups() {
@@ -86,6 +86,10 @@ function App() {
 
   function handleEditProfileClick() {
     setEditProfilePopupState(true);
+  }
+
+  function handleLogin() {
+    setIsLoggedIn(true);
   }
 
   function handleUpdateAvatar({ avatar: link }) {
@@ -149,6 +153,7 @@ function App() {
             path="/sign-in"
             element={
               <Login
+                handleLogin={handleLogin}
               />}
           />
           <Route

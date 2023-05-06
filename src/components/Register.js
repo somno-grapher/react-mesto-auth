@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-import Entry from "./Entry";
+import Entry from './Entry';
+import * as auth from '../utils/auth';
 
 function Register() {
 
@@ -8,6 +10,8 @@ function Register() {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -17,12 +21,26 @@ function Register() {
     });
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth.register(formValue.password, formValue.email)
+      // .then((res) => console.log(res));
+      .then(() => {
+        setFormValue({ email: '', password: '' });
+        navigate('/sign-in', { replace: true })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <Entry
       title="Регистрация"
       buttonText="Зарегистрироваться"
       linkTitle="Уже зарегистрированы? Войти"
       linkPath="/sign-in"
+      onSubmit={handleSubmit}
     >
       <label className="input-label">
         <input

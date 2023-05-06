@@ -29,6 +29,7 @@ function Entry({
           {buttonText}
         </button>
       </form>
+      {/* TODO divide title and path */}
       <NavLink
         className="entry__link"
         to={linkPath}
