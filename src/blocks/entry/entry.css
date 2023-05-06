@@ -1,0 +1,10 @@
+.entry {
+  display:flex;
+  flex-direction: column;
+  max-width: 358px;
+  /* TODO move margins */
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 20px;
+  margin-bottom: 66px;
+}

@@ -1,4 +1,6 @@
 .popup__submit-button {
+  background-color: #000;
+  color: #fff;
   transition: .3s;
   margin-top: 18px;
 }

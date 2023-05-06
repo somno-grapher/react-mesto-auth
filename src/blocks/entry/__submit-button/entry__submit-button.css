@@ -1,0 +1,16 @@
+.entry__submit-button {
+  background-color: #fff;
+  color: #000;
+  transition: .3s;
+  margin-top: 18px;
+}
+
+.entry__submit-button:hover {
+  opacity: .85;
+}
+
+@media screen and (max-width: 917px) {
+  .entry__submit-button {
+    margin-top: 15px;
+  }
+}

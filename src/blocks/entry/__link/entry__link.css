@@ -1,0 +1,14 @@
+.entry__link {
+  padding-top: 15px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  transition: .3s;
+}
+
+.entry__link:hover {
+  opacity: .6;
+}
