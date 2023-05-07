@@ -27,10 +27,8 @@ function Register({
   const handleSubmit = (e) => {
     e.preventDefault();
     auth.register(formValue.password, formValue.email)
-      // .then((res) => console.log(res));
       .then(() => {
         setFormValue({ email: '', password: '' });
-        // infoTooltipData.iconSrc = '../images/icons/ok.svg';
         handleTooltipData(true);
         setInfoTooltipState(true);
         navigate('/sign-in', { replace: true })

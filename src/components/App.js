@@ -238,7 +238,6 @@ function App() {
                 handleTooltipData={handleTooltipData}
               />}
           />
-          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
         <Footer />
       </div>

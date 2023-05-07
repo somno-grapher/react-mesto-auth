@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from 'react-router-dom';
 
 import Entry from './Entry';
 import * as auth from '../utils/auth';
@@ -15,8 +14,6 @@ function Login({
     password: ''
   });
 
-  // const navigate = useNavigate();
-
   function handleChange(e) {
     const { name, value } = e.target;
     setFormValue({
@@ -28,12 +25,10 @@ function Login({
   const handleSubmit = (e) => {
     e.preventDefault();
     auth.authorize(formValue.password, formValue.email)
-      // .then((res) => console.log(res));
       .then((jsonResponse) => {
         if (jsonResponse.token) {
           setFormValue({ email: '', password: '' });
           handleLogin();
-          // navigate('/', { replace: true });
         }
       })
       .catch((err) => {

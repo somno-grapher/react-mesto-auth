@@ -7,7 +7,6 @@ function InfoTooltip({
   isOpen,
   onClose
 }) {
-  // const iconPath = require('../images/icons/ok.svg');
   const stateClass = isOpen ? 'popup_opened' : '';
   return (
     <div className={`popup ${stateClass}`}>

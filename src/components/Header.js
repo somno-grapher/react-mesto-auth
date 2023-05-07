@@ -37,7 +37,6 @@ function Header({
                 Войти
               </Link>}
           />
-          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
       </div>
       <div className="header__details">
@@ -61,7 +60,6 @@ function Header({
               </>
             }
           />
-          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
       </div>
     </header>
