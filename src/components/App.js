@@ -226,6 +226,8 @@ function App() {
             element={
               <Login
                 handleLogin={handleLogin}
+                setInfoTooltipState={setInfoTooltipState}
+                handleTooltipData={handleTooltipData}
               />}
           />
           <Route

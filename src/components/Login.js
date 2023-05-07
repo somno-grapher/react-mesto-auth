@@ -5,7 +5,9 @@ import Entry from './Entry';
 import * as auth from '../utils/auth';
 
 function Login({
-  handleLogin
+  handleLogin,
+  setInfoTooltipState,
+  handleTooltipData
 }) {
 
   const [formValue, setFormValue] = useState({
@@ -34,9 +36,11 @@ function Login({
           // navigate('/', { replace: true });
         }
       })
-      // .catch((err) => {
-      //   console.log(err);
-      // })
+      .catch((err) => {
+        handleTooltipData(false);
+        setInfoTooltipState(true);
+        console.log(err);
+      })
       ;
   }
 
