@@ -1,6 +1,6 @@
 // react import
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // project import
 import AddPlacePopup from './AddPlacePopup';
@@ -16,6 +16,7 @@ import Main from './Main.js';
 import PopupWithForm from './PopupWithForm.js';
 import ProtectedRouteElement from './ProtectedRoute';
 import Register from './Register';
+import * as auth from '../utils/auth';
 
 function App() {
 
@@ -27,6 +28,12 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
+  const [userData, setUserData] = useState({
+    _id: '',
+    email: ''
+  });
+
+  const navigate = useNavigate();
 
   function closeAllPopups() {
     setAddPlacePopupState(false);
@@ -92,6 +99,31 @@ function App() {
     setIsLoggedIn(true);
   }
 
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    navigate('/sign-in', { replace: true });
+  }
+
+  function handleTokenCheck() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((jsonResponse) => {
+          const userData = {
+            _id: jsonResponse.data._id,
+            email: jsonResponse.data.email
+          }
+          setUserData(userData);
+          setIsLoggedIn(true);
+          navigate("/", { replace: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   function handleUpdateAvatar({ avatar: link }) {
     api.updateAvatar({ link })
       .then((jsonResponseUser) => {
@@ -115,6 +147,11 @@ function App() {
   }
 
   useEffect(() => {
+    handleTokenCheck();
+  },
+    []);
+
+  useEffect(() => {
     Promise.all([api.getCurrentUser(), api.getInitialCards()])
       .then(([jsonResponseUser, jsonResponseCards]) => {
         setCurrentUser(jsonResponseUser);
@@ -123,7 +160,8 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },
+    []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -131,7 +169,9 @@ function App() {
       {/* regular page */}
 
       <div className="page">
-        <Header />
+        <Header
+          onSignOut={handleSignOut}
+        />
         <Routes>
           <Route
             path="/"

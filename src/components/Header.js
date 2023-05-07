@@ -2,12 +2,18 @@ import React from 'react';
 
 import logoPath from '../images/logo/mesto-russia-logo.svg';
 
-function Header() {
+function Header({
+  onSignOut
+}) {
+
   return (
     <header className="header page__header">
-      <img src={logoPath}
+      <img
+        className="logo header__logo"
+        src={logoPath}
         alt="Логотип"
-        className="logo header__logo" />
+        onClick={onSignOut}
+      />
     </header>
   );
 }
