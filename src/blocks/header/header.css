@@ -1,6 +1,9 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 119px;
   position: relative;
-  min-height: 74px;
 }
 
 .header::after {
@@ -15,7 +18,8 @@
 
 @media screen and (max-width: 917px) {
   .header {
-    min-height: 56px;
+    min-height: 84px;
     padding-left: 27px;
+    padding-right: 27px;
   }
 }

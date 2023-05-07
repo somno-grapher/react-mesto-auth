@@ -1,0 +1,15 @@
+.header__entry-link{
+  margin: 0;
+  padding: 0;
+  color:#fff;
+  font-size: 18px;
+  line-height: 1.22;
+  text-decoration: none;
+  font-weight: 400;
+  transition:.3s;
+  margin-left: auto;
+}
+
+.header__entry-link:hover{
+  opacity: .6;
+}

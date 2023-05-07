@@ -170,6 +170,7 @@ function App() {
 
       <div className="page">
         <Header
+          email={userData.email}
           onSignOut={handleSignOut}
         />
         <Routes>
