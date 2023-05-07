@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Entry({
   // TODO is needed?
@@ -30,12 +30,12 @@ function Entry({
         </button>
       </form>
       {/* TODO divide title and path */}
-      <NavLink
+      <Link
         className="entry__link"
         to={linkPath}
       >
         {linkTitle}
-      </NavLink>
+      </Link>
     </div>
   );
 }

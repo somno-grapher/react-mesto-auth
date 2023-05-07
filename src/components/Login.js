@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import Entry from './Entry';
 import * as auth from '../utils/auth';
@@ -13,7 +13,7 @@ function Login({
     password: ''
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,12 +31,13 @@ function Login({
         if (jsonResponse.token) {
           setFormValue({ email: '', password: '' });
           handleLogin();
-          navigate('/', { replace: true });
+          // navigate('/', { replace: true });
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+      ;
   }
 
   return (

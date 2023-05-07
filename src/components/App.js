@@ -11,6 +11,7 @@ import EditAvatarPopup from './EditAvatarPopup';
 import Footer from './Footer.js';
 import Header from './Header.js';
 import ImagePopup from './ImagePopup.js';
+import InfoTooltip from './InfoTooltip';
 import Login from './Login';
 import Main from './Main.js';
 import PopupWithForm from './PopupWithForm.js';
@@ -26,12 +27,18 @@ function App() {
   const [isConfirmPopupOpen, setConfirmPopupState] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
+  const [isInfoTooltipOpen, setInfoTooltipState] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [userData, setUserData] = useState({
     _id: '',
     email: ''
   });
+
+  const infoTooltipData = {
+    iconSrc: '',
+    message: ''
+  };
 
   const navigate = useNavigate();
 
@@ -40,6 +47,7 @@ function App() {
     setConfirmPopupState(false);
     setEditAvatarPopupState(false);
     setEditProfilePopupState(false);
+    setInfoTooltipState(false);
     setSelectedCard({});
   }
 
@@ -97,11 +105,16 @@ function App() {
 
   function handleLogin() {
     setIsLoggedIn(true);
+    handleTokenCheck();
   }
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
+    setUserData({
+      _id: '',
+      email: ''
+    });
     navigate('/sign-in', { replace: true });
   }
 
@@ -201,8 +214,10 @@ function App() {
             path="/sign-up"
             element={
               <Register
+                setInfoTooltipState={setInfoTooltipState}
               />}
           />
+          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
         <Footer />
       </div>
@@ -230,6 +245,11 @@ function App() {
 
       <ImagePopup
         card={selectedCard}
+        onClose={closeAllPopups}
+      />
+
+      <InfoTooltip
+        isOpen={isInfoTooltipOpen}
         onClose={closeAllPopups}
       />
 

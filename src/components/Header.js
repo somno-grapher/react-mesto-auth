@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
 import logoPath from '../images/logo/mesto-russia-logo.svg';
 
@@ -14,30 +14,30 @@ function Header({
         className="logo header__logo"
         src={logoPath}
         alt="Логотип"
-        onClick={onSignOut}
       />
       <div className="header__pivot">
         <Routes>
           <Route
             path="/sign-in"
             element={
-              <NavLink
+              <Link
                 className="header__entry-link"
                 to="/sign-up"
               >
                 Регистрация
-              </NavLink>}
+              </Link>}
           />
           <Route
             path="/sign-up"
             element={
-              <NavLink
+              <Link
                 className="header__entry-link"
                 to="/sign-in"
               >
                 Войти
-              </NavLink>}
+              </Link>}
           />
+          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
       </div>
       <div className="header__details">
@@ -45,13 +45,23 @@ function Header({
           <Route
             path="/"
             element={
-              <p
-                className="header__email"
-              >
-                {`${email}fasdfds`}
-              </p>
+              <>
+                <p
+                  className="header__email"
+                >
+                  {`${email}`}
+                </p>
+                <Link
+                  className="header__sign-out-link"
+                  to="/sign-in"
+                  onClick={onSignOut}
+                >
+                  Выйти
+                </Link>
+              </>
             }
           />
+          {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
         </Routes>
       </div>
     </header>

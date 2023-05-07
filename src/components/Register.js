@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import Entry from './Entry';
 import * as auth from '../utils/auth';
 
-function Register() {
+function Register({
+  setInfoTooltipState
+}) {
 
   const [formValue, setFormValue] = useState({
     email: '',
@@ -27,9 +29,11 @@ function Register() {
       // .then((res) => console.log(res));
       .then(() => {
         setFormValue({ email: '', password: '' });
+        setInfoTooltipState(true);
         navigate('/sign-in', { replace: true })
       })
       .catch((err) => {
+        setInfoTooltipState(true);
         console.log(err);
       });
   }
