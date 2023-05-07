@@ -1,15 +1,13 @@
 import React from 'react';
 
-import logoPath from '../images/icons/ok.svg';
+import iconPath from '../images/icons/ok.svg';
 
 function InfoTooltip({
-  iconSrc,
-  message,
+  infoTooltipData,
   isOpen,
   onClose
 }) {
-  // const iconPath = require(iconSrc);
-  // isOpen = true;
+  // const iconPath = require('../images/icons/ok.svg');
   const stateClass = isOpen ? 'popup_opened' : '';
   return (
     <div className={`popup ${stateClass}`}>
@@ -22,10 +20,10 @@ function InfoTooltip({
         </button>
         <img
           className="info-icon"
-          src={logoPath}
+          src={infoTooltipData.iconSrc}
           alt="Логотип"
         />
-        <p className="popup__message">'fsafa'</p>
+        <p className="popup__message">{infoTooltipData.message}</p>
       </div>
     </div>
   );

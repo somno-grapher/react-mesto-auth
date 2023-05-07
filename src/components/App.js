@@ -19,6 +19,10 @@ import ProtectedRouteElement from './ProtectedRoute';
 import Register from './Register';
 import * as auth from '../utils/auth';
 
+import okIconPath from '../images/icons/ok.svg';
+import errorIconPath from '../images/icons/error.svg';
+
+
 function App() {
 
   const [cards, setCards] = useState([]);
@@ -35,10 +39,24 @@ function App() {
     email: ''
   });
 
-  const infoTooltipData = {
+  const [infoTooltipData, setInfoTooltipData] = useState({
     iconSrc: '',
     message: ''
-  };
+  });
+
+  function handleTooltipData(isOk) {
+    if (isOk) {
+      setInfoTooltipData({
+        iconSrc: okIconPath,
+        message: 'Вы успешно зарегистрировались!'
+      })
+    } else {
+      setInfoTooltipData({
+        iconSrc: errorIconPath,
+        message: 'Что-то пошло не так! Попробуйте еще раз'
+      })
+    }
+  }
 
   const navigate = useNavigate();
 
@@ -215,6 +233,7 @@ function App() {
             element={
               <Register
                 setInfoTooltipState={setInfoTooltipState}
+                handleTooltipData={handleTooltipData}
               />}
           />
           {/* <Route path="*" element={<p>Страницы не существует</p>} /> */}
@@ -251,6 +270,7 @@ function App() {
       <InfoTooltip
         isOpen={isInfoTooltipOpen}
         onClose={closeAllPopups}
+        infoTooltipData={infoTooltipData}
       />
 
       <PopupWithForm

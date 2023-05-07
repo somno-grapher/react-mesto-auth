@@ -5,7 +5,8 @@ import Entry from './Entry';
 import * as auth from '../utils/auth';
 
 function Register({
-  setInfoTooltipState
+  setInfoTooltipState,
+  handleTooltipData
 }) {
 
   const [formValue, setFormValue] = useState({
@@ -29,10 +30,13 @@ function Register({
       // .then((res) => console.log(res));
       .then(() => {
         setFormValue({ email: '', password: '' });
+        // infoTooltipData.iconSrc = '../images/icons/ok.svg';
+        handleTooltipData(true);
         setInfoTooltipState(true);
         navigate('/sign-in', { replace: true })
       })
       .catch((err) => {
+        handleTooltipData(false);
         setInfoTooltipState(true);
         console.log(err);
       });
