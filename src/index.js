@@ -1,3 +1,7 @@
+// ! for compatibility issues use
+// "start": "react-scripts --openssl-legacy-provider start",
+// ! in package.json
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

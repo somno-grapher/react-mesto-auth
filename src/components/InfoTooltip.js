@@ -1,7 +1,5 @@
 import React from 'react';
 
-import iconPath from '../images/icons/ok.svg';
-
 function InfoTooltip({
   infoTooltipData,
   isOpen,
