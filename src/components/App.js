@@ -175,16 +175,18 @@ function App() {
     []);
 
   useEffect(() => {
-    Promise.all([api.getCurrentUser(), api.getInitialCards()])
-      .then(([jsonResponseUser, jsonResponseCards]) => {
-        setCurrentUser(jsonResponseUser);
-        setCards(jsonResponseCards)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (isLoggedIn) {
+      Promise.all([api.getCurrentUser(), api.getInitialCards()])
+        .then(([jsonResponseUser, jsonResponseCards]) => {
+          setCurrentUser(jsonResponseUser);
+          setCards(jsonResponseCards)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   },
-    []);
+    [isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
