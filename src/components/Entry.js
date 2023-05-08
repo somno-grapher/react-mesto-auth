@@ -2,13 +2,11 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 function Entry({
-  // TODO is needed?
   name,
   title,
   buttonText,
   linkTitle = "",
   linkPath = "",
-  // TODO to be input
   onSubmit,
   children
 }) {
@@ -18,7 +16,8 @@ function Entry({
       <form
         className="entry__form"
         name={`${name}-form`}
-        noValidate
+        // TODO provide js validation
+        // noValidate
         onSubmit={onSubmit}
       >
         {children}

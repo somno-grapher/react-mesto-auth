@@ -22,7 +22,8 @@ function PopupWithForm({
         <form
           name={`${name}-form`}
           className="popup__form"
-          noValidate
+          // TODO provide js validation
+          // noValidate
           onSubmit={onSubmit}
         >
           {children}
