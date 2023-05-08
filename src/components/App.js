@@ -41,18 +41,18 @@ function App() {
     message: ''
   });
 
-  function handleTooltipData(isOk) {
+  function handleTooltipData(isOk, message) {
     if (isOk) {
       setInfoTooltipData({
         iconSrc: okIconPath,
-        message: 'Вы успешно зарегистрировались!'
+        message: message
       })
     } else {
       setInfoTooltipData({
         iconSrc: errorIconPath,
-        message: 'Что-то пошло не так! Попробуйте еще раз'
+        message: message
       })
-    }
+    };
   }
 
   const navigate = useNavigate();
@@ -132,7 +132,7 @@ function App() {
         }
       })
       .catch((err) => {
-        handleTooltipData(false);
+        handleTooltipData(false, 'Что-то пошло не так! Попробуйте еще раз');
         setInfoTooltipState(true);
         console.log(err);
       });
@@ -145,12 +145,12 @@ function App() {
     auth.register(password, email)
       .then(() => {
         setFormValue({ email: '', password: '' });
-        handleTooltipData(true);
+        handleTooltipData(true, 'Вы успешно зарегистрировались!');
         setInfoTooltipState(true);
         navigate('/sign-in', { replace: true })
       })
       .catch((err) => {
-        handleTooltipData(false);
+        handleTooltipData(false, 'Что-то пошло не так! Попробуйте еще раз');
         setInfoTooltipState(true);
         console.log(err);
       });
