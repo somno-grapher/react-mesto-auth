@@ -28,7 +28,7 @@ function Login({
       .then((jsonResponse) => {
         if (jsonResponse.token) {
           setFormValue({ email: '', password: '' });
-          handleLogin();
+          handleLogin(formValue.email);
         }
       })
       .catch((err) => {

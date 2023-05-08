@@ -34,10 +34,7 @@ function App() {
   const [isInfoTooltipOpen, setInfoTooltipState] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
-  const [userData, setUserData] = useState({
-    _id: '',
-    email: ''
-  });
+  const [email, setEmail] = useState('');
 
   const [infoTooltipData, setInfoTooltipData] = useState({
     iconSrc: '',
@@ -121,18 +118,16 @@ function App() {
     setEditProfilePopupState(true);
   }
 
-  function handleLogin() {
+  function handleLogin(email) {
     setIsLoggedIn(true);
-    handleTokenCheck();
+    setEmail(email);
+    navigate("/", { replace: true });
   }
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
-    setUserData({
-      _id: '',
-      email: ''
-    });
+    setEmail('');
     navigate('/sign-in', { replace: true });
   }
 
@@ -141,11 +136,8 @@ function App() {
     if (jwt) {
       auth.checkToken(jwt)
         .then((jsonResponse) => {
-          const userData = {
-            _id: jsonResponse.data._id,
-            email: jsonResponse.data.email
-          }
-          setUserData(userData);
+          const email = jsonResponse.data.email;
+          setEmail(email);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
         })
@@ -201,7 +193,7 @@ function App() {
 
       <div className="page">
         <Header
-          email={userData.email}
+          email={email}
           onSignOut={handleSignOut}
         />
         <Routes>
