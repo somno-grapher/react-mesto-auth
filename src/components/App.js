@@ -118,10 +118,24 @@ function App() {
     setEditProfilePopupState(true);
   }
 
-  function handleLogin(email) {
-    setIsLoggedIn(true);
-    setEmail(email);
-    navigate("/", { replace: true });
+  function handleLogin(
+    password,
+    email,
+    setFormValue) {
+    auth.authorize(password, email)
+      .then((jsonResponse) => {
+        if (jsonResponse.token) {
+          setFormValue({ email: '', password: '' });
+          setIsLoggedIn(true);
+          setEmail(email);
+          navigate("/", { replace: true });
+        }
+      })
+      .catch((err) => {
+        handleTooltipData(false);
+        setInfoTooltipState(true);
+        console.log(err);
+      });
   }
 
   function handleSignOut() {
@@ -220,8 +234,6 @@ function App() {
             element={
               <Login
                 handleLogin={handleLogin}
-                setInfoTooltipState={setInfoTooltipState}
-                handleTooltipData={handleTooltipData}
               />}
           />
           <Route

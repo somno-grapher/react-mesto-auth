@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
 import Entry from './Entry';
-import * as auth from '../utils/auth';
 
 function Login({
-  handleLogin,
-  setInfoTooltipState,
-  handleTooltipData
+  handleLogin
 }) {
 
   const [formValue, setFormValue] = useState({
@@ -24,19 +21,10 @@ function Login({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.authorize(formValue.password, formValue.email)
-      .then((jsonResponse) => {
-        if (jsonResponse.token) {
-          setFormValue({ email: '', password: '' });
-          handleLogin(formValue.email);
-        }
-      })
-      .catch((err) => {
-        handleTooltipData(false);
-        setInfoTooltipState(true);
-        console.log(err);
-      })
-      ;
+    handleLogin(
+      formValue.password,
+      formValue.email,
+      setFormValue);
   }
 
   return (
