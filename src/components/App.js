@@ -138,6 +138,24 @@ function App() {
       });
   }
 
+  function handleRegister(
+    password,
+    email,
+    setFormValue) {
+    auth.register(password, email)
+      .then(() => {
+        setFormValue({ email: '', password: '' });
+        handleTooltipData(true);
+        setInfoTooltipState(true);
+        navigate('/sign-in', { replace: true })
+      })
+      .catch((err) => {
+        handleTooltipData(false);
+        setInfoTooltipState(true);
+        console.log(err);
+      });
+  }
+
   function handleSignOut() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
@@ -240,8 +258,7 @@ function App() {
             path="/sign-up"
             element={
               <Register
-                setInfoTooltipState={setInfoTooltipState}
-                handleTooltipData={handleTooltipData}
+                handleRegister={handleRegister}
               />}
           />
         </Routes>

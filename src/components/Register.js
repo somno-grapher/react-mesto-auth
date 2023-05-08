@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 
 import Entry from './Entry';
-import * as auth from '../utils/auth';
 
 function Register({
-  setInfoTooltipState,
-  handleTooltipData
+  handleRegister
 }) {
 
   const [formValue, setFormValue] = useState({
     email: '',
     password: ''
   });
-
-  const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -26,18 +21,10 @@ function Register({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.register(formValue.password, formValue.email)
-      .then(() => {
-        setFormValue({ email: '', password: '' });
-        handleTooltipData(true);
-        setInfoTooltipState(true);
-        navigate('/sign-in', { replace: true })
-      })
-      .catch((err) => {
-        handleTooltipData(false);
-        setInfoTooltipState(true);
-        console.log(err);
-      });
+    handleRegister(
+      formValue.password,
+      formValue.email,
+      setFormValue);
   }
 
   return (
@@ -74,6 +61,7 @@ function Register({
       </label>
     </Entry>
   );
+
 }
 
 export default Register;
